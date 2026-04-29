@@ -45,6 +45,7 @@ function AudioControls(props: { src: string }) {
 export default function StudyMode(props: Props) {
   const [index, setIndex] = createSignal(0);
   const [flipped, setFlipped] = createSignal(false);
+  const [imgLoading, setImgLoading] = createSignal(true);
 
   createEffect(() => {
     void props.cards;
@@ -53,6 +54,11 @@ export default function StudyMode(props: Props) {
   });
 
   const card = () => props.cards[index()];
+
+  createEffect(() => {
+    void card().illustration;
+    setImgLoading(true);
+  });
   const total = () => props.cards.length;
 
   function prev() {
@@ -81,10 +87,16 @@ export default function StudyMode(props: Props) {
       >
         <div class="study__front">
           <div class="study__img-wrap">
+            {imgLoading() && <div class="study__img-loader" />}
             <img
               src={`${import.meta.env.BASE_URL}/images/${card().illustration}`}
               alt={card().word}
-              onError={(e) => { (e.target as HTMLImageElement).src = `${import.meta.env.BASE_URL}/images/placeholder.svg`; }}
+              style={{ opacity: imgLoading() ? 0 : 1 }}
+              onLoad={() => setImgLoading(false)}
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = `${import.meta.env.BASE_URL}/images/placeholder.svg`;
+                setImgLoading(false);
+              }}
             />
           </div>
           <p class="study__word">{card().word}</p>
