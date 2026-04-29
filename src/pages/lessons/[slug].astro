@@ -15,7 +15,7 @@ const { lesson } = Astro.props;
 
 <BaseLayout title={lesson.title}>
   <div class="lesson-header">
-    <a class="back" href={import.meta.env.BASE_URL}>← Все уроки</a>
+    <a class="back" href={`${import.meta.env.BASE_URL}/`}>← Все уроки</a>
     <h1 class="lesson-title">{lesson.title}</h1>
     {lesson.description && (
       <p class="lesson-desc">{lesson.description}</p>

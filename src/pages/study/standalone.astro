@@ -10,7 +10,7 @@ const cards = getStandaloneCards();
 <BaseLayout title="Изучать — отдельные карточки">
   <div class="study-page">
     <div class="study-header">
-      <a class="back" href={import.meta.env.BASE_URL}>← Главная</a>
+      <a class="back" href={`${import.meta.env.BASE_URL}/`}>← Главная</a>
       <h1 class="study-title">Отдельные карточки</h1>
       <p class="study-count">{cards.length} слов</p>
     </div>
