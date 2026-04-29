@@ -5,7 +5,7 @@ interface Props {
   cards: Card[];
 }
 
-function AudioControls(props: { src: string }) {
+function AudioControls(props: { src: string; stopKey: number }) {
   const [playing, setPlaying] = createSignal(false);
   let audio: HTMLAudioElement | null = null;
 
@@ -26,6 +26,7 @@ function AudioControls(props: { src: string }) {
     setPlaying(true);
   }
 
+  createEffect(() => { void props.stopKey; stop(); });
   onCleanup(stop);
 
   return (
@@ -46,6 +47,7 @@ export default function StudyMode(props: Props) {
   const [index, setIndex] = createSignal(0);
   const [flipped, setFlipped] = createSignal(false);
   const [imgLoading, setImgLoading] = createSignal(true);
+  const [stopKey, setStopKey] = createSignal(0);
   let imgRef: HTMLImageElement | undefined;
 
   createEffect(() => {
@@ -67,11 +69,13 @@ export default function StudyMode(props: Props) {
   });
 
   function prev() {
+    setStopKey((k) => k + 1);
     setFlipped(false);
     setIndex((i) => (i - 1 + total()) % total());
   }
 
   function next() {
+    setStopKey((k) => k + 1);
     setFlipped(false);
     setIndex((i) => (i + 1) % total());
   }
@@ -113,14 +117,14 @@ export default function StudyMode(props: Props) {
         <div class="study__back">
           <p class="study__translation">{card().word}</p>
           {card().audio && (
-            <AudioControls src={`${import.meta.env.BASE_URL}/audio/${card().audio}`} />
+            <AudioControls src={`${import.meta.env.BASE_URL}/audio/${card().audio}`} stopKey={stopKey()} />
           )}
           {card().example && (
             <div class="study__example" onClick={(e) => e.stopPropagation()}>
               <p class="study__example-sentence">{card().example!.sentence}</p>
               <p class="study__example-translation">{card().example!.translation}</p>
               {card().example!.audio && (
-                <AudioControls src={`${import.meta.env.BASE_URL}/audio/${card().example!.audio}`} />
+                <AudioControls src={`${import.meta.env.BASE_URL}/audio/${card().example!.audio}`} stopKey={stopKey()} />
               )}
             </div>
           )}
