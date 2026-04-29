@@ -107,14 +107,14 @@ export default function StudyMode(props: Props) {
               }}
             />
           </div>
-          <p class="study__word">{card().word}</p>
-          {card().audio && (
-            <AudioControls src={`${import.meta.env.BASE_URL}/audio/${card().audio}`} />
-          )}
+          <p class="study__word">{card().translation}</p>
         </div>
 
         <div class="study__back">
-          <p class="study__translation">{card().translation}</p>
+          <p class="study__translation">{card().word}</p>
+          {card().audio && (
+            <AudioControls src={`${import.meta.env.BASE_URL}/audio/${card().audio}`} />
+          )}
           {card().example && (
             <div class="study__example" onClick={(e) => e.stopPropagation()}>
               <p class="study__example-sentence">{card().example!.sentence}</p>
