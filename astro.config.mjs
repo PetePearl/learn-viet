@@ -4,5 +4,6 @@ import solidJs from '@astrojs/solid-js';
 export default defineConfig({
   integrations: [solidJs()],
   output: 'static',
-  // base: '/repo-name/', // раскомментировать для project pages на GitHub
+  site: 'https://petepearl.github.io',
+  base: '/learn-viet',
 });

@@ -17,7 +17,7 @@ const { lesson } = Astro.props;
 <BaseLayout title={`Изучение — ${lesson.title}`}>
   <div class="study-page">
     <div class="study-header">
-      <a class="back" href={`/lessons/${lesson.slug}`}>← К уроку</a>
+      <a class="back" href={`${import.meta.env.BASE_URL}/lessons/${lesson.slug}`}>← К уроку</a>
       <h1 class="study-title">{lesson.title}</h1>
     </div>
     <StudyMode cards={lesson.cards} client:load />

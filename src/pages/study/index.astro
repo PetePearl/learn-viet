@@ -19,7 +19,7 @@ const lessonMetas = lessons.map((l) => ({ slug: l.slug, title: l.title }));
 <BaseLayout title="Изучение слов">
   <div class="study-page">
     <div class="study-header">
-      <a class="back" href="/">← Уроки</a>
+      <a class="back" href={import.meta.env.BASE_URL}>← Уроки</a>
       <h1 class="study-title">Изучение слов</h1>
     </div>
     <StudyFilter cards={allCards} lessons={lessonMetas} tags={tags} client:load />

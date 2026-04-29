@@ -82,14 +82,14 @@ export default function StudyMode(props: Props) {
         <div class="study__front">
           <div class="study__img-wrap">
             <img
-              src={`/images/${card().illustration}`}
+              src={`${import.meta.env.BASE_URL}/images/${card().illustration}`}
               alt={card().word}
-              onError={(e) => { (e.target as HTMLImageElement).src = '/images/placeholder.svg'; }}
+              onError={(e) => { (e.target as HTMLImageElement).src = `${import.meta.env.BASE_URL}/images/placeholder.svg`; }}
             />
           </div>
           <p class="study__word">{card().word}</p>
           {card().audio && (
-            <AudioControls src={`/audio/${card().audio}`} />
+            <AudioControls src={`${import.meta.env.BASE_URL}/audio/${card().audio}`} />
           )}
         </div>
 
@@ -100,7 +100,7 @@ export default function StudyMode(props: Props) {
               <p class="study__example-sentence">{card().example!.sentence}</p>
               <p class="study__example-translation">{card().example!.translation}</p>
               {card().example!.audio && (
-                <AudioControls src={`/audio/${card().example!.audio}`} />
+                <AudioControls src={`${import.meta.env.BASE_URL}/audio/${card().example!.audio}`} />
               )}
             </div>
           )}

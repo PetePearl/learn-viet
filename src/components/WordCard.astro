@@ -14,10 +14,10 @@ const cardTags = (card.tags ?? []).map((id) => allTags.find((t) => t.id === id))
 <div class="word-card">
   <div class="word-card__img-wrap">
     <img
-      src={`/images/${card.illustration}`}
+      src={`${import.meta.env.BASE_URL}/images/${card.illustration}`}
       alt={card.word}
       loading="lazy"
-      onerror="this.src='/images/placeholder.svg'"
+      onerror={`this.src='${import.meta.env.BASE_URL}/images/placeholder.svg'`}
     />
   </div>
   <div class="word-card__body">
@@ -33,7 +33,7 @@ const cardTags = (card.tags ?? []).map((id) => allTags.find((t) => t.id === id))
     {card.audio && (
       <button
         class="word-card__audio"
-        data-audio={`/audio/${card.audio}`}
+        data-audio={`${import.meta.env.BASE_URL}/audio/${card.audio}`}
         aria-label="Произношение"
         title="Воспроизвести"
       >

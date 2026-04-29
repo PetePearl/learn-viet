@@ -7,6 +7,9 @@ interface Props {
 
 const { title } = Astro.props;
 const path = Astro.url.pathname;
+const base = import.meta.env.BASE_URL.replace(/\/$/, ''); // '/learn-viet'
+const isHome = path === base || path === base + '/';
+const isStudy = path.startsWith(`${base}/study`);
 ---
 
 <!doctype html>
@@ -19,10 +22,10 @@ const path = Astro.url.pathname;
   <body>
     <header class="site-header">
       <nav class="nav">
-        <a class="nav__logo" href="/">Viet Learn</a>
+        <a class="nav__logo" href={`${base}/`}>Viet Learn</a>
         <div class="nav__links">
-          <a href="/" class={path === '/' ? 'active' : ''}>Уроки</a>
-          <a href="/study" class={path.startsWith('/study') ? 'active' : ''}>Изучать</a>
+          <a href={`${base}/`} class={isHome ? 'active' : ''}>Уроки</a>
+          <a href={`${base}/study`} class={isStudy ? 'active' : ''}>Изучать</a>
         </div>
       </nav>
     </header>
