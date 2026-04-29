@@ -8,11 +8,11 @@
       "word": "Nam",
       "translation": "Нам (имя мальчика)",
       "illustration": "nam.png",
-      "audio": null,
+      "audio": "nam.mp3",
       "example": {
         "sentence": "Nam ăn cam.",
         "translation": "Нам ест апельсин.",
-        "audio": null
+        "audio": "nam-example.mp3"
       }
     },
     {
@@ -20,11 +20,11 @@
       "word": "An",
       "translation": "Ан (имя девочки)",
       "illustration": "an.png",
-      "audio": null,
+      "audio": "an.mp3",
       "example": {
         "sentence": "An ăn dâu tây.",
         "translation": "Ан ест клубнику.",
-        "audio": null
+        "audio": "an-example.mp3"
       }
     },
     {
@@ -32,11 +32,11 @@
       "word": "bà",
       "translation": "бабушка",
       "illustration": "ba.png",
-      "audio": null,
+      "audio": "ba.mp3",
       "example": {
         "sentence": "Bà ăn cơm.",
         "translation": "Бабушка ест рис.",
-        "audio": null
+        "audio": "ba-example.mp3"
       }
     },
     {
@@ -44,11 +44,11 @@
       "word": "ăn",
       "translation": "есть, кушать",
       "illustration": "an-eat.png",
-      "audio": null,
+      "audio": "an-eat.mp3",
       "example": {
         "sentence": "Nam và An ăn cam.",
         "translation": "Нам и Ан едят апельсин.",
-        "audio": null
+        "audio": "an-eat-example.mp3"
       }
     },
     {
@@ -60,7 +60,7 @@
       "example": {
         "sentence": "Bà ăn cam.",
         "translation": "Бабушка ест апельсин.",
-        "audio": null
+        "audio": "cam-example.mp3"
       }
     },
     {
@@ -72,7 +72,7 @@
       "example": {
         "sentence": "Nam ăn cơm.",
         "translation": "Нам ест рис.",
-        "audio": null
+        "audio": "com-example.mp3"
       }
     },
     {
@@ -84,7 +84,7 @@
       "example": {
         "sentence": "An ăn dâu tây.",
         "translation": "Ан ест клубнику.",
-        "audio": null
+        "audio": "dau-tay-example.mp3"
       }
     },
     {
@@ -96,7 +96,7 @@
       "example": {
         "sentence": "Bà ăn nấm.",
         "translation": "Бабушка ест грибы.",
-        "audio": null
+        "audio": "nam-mushroom-example.mp3"
       }
     },
     {
@@ -108,7 +108,7 @@
       "example": {
         "sentence": "Nam và An vui.",
         "translation": "Нам и Ан радостные.",
-        "audio": null
+        "audio": "vui-example.mp3"
       }
     },
     {
@@ -116,11 +116,11 @@
       "word": "Ai?",
       "translation": "кто?",
       "illustration": "ai.png",
-      "audio": null,
+      "audio": "ai.mp3",
       "example": {
         "sentence": "Ai ăn cam?",
         "translation": "Кто ест апельсин?",
-        "audio": null
+        "audio": "ai-example.mp3"
       }
     }
   ]
