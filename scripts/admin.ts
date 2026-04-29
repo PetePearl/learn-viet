@@ -99,6 +99,19 @@ function saveCard(card: object, lessonSlug?: string) {
   }
 }
 
+function pruneUnusedTags() {
+  const lessonCards = readdirSync(LESSONS_DIR)
+    .filter((f) => f.endsWith('.json'))
+    .flatMap((f) => JSON.parse(readFileSync(join(LESSONS_DIR, f), 'utf-8')).cards as any[]);
+  const standalone = JSON.parse(readFileSync(CARDS_FILE, 'utf-8')) as any[];
+  const usedIds = new Set([...lessonCards, ...standalone].flatMap((c) => (c.tags ?? []).filter(Boolean)));
+  const tags = JSON.parse(readFileSync(TAGS_FILE, 'utf-8')) as any[];
+  const filtered = tags.filter((t: any) => usedIds.has(t.id));
+  if (filtered.length !== tags.length) {
+    writeFileSync(TAGS_FILE, JSON.stringify(filtered, null, 2) + '\n');
+  }
+}
+
 // --- HTML ---
 
 const HTML = /* html */ `<!doctype html>
@@ -1057,6 +1070,7 @@ const server = Bun.serve({
         lesson.cards = lesson.cards.filter((c: any) => c.id !== cardId);
         if (lesson.cards.length === before) return Response.json({ ok: false, error: 'Карточка не найдена' }, { status: 404 });
         writeFileSync(path, JSON.stringify(lesson, null, 2) + '\n');
+        pruneUnusedTags();
         return Response.json({ ok: true });
       } catch (err: any) {
         return Response.json({ ok: false, error: err.message }, { status: 500 });
@@ -1110,6 +1124,7 @@ const server = Bun.serve({
         const updated = cards.filter((c) => c.id !== cardId);
         if (updated.length === before) return Response.json({ ok: false, error: 'Карточка не найдена' }, { status: 404 });
         writeFileSync(CARDS_FILE, JSON.stringify(updated, null, 2) + '\n');
+        pruneUnusedTags();
         return Response.json({ ok: true });
       } catch (err: any) {
         return Response.json({ ok: false, error: err.message }, { status: 500 });
