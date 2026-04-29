@@ -1,0 +1,20 @@
+# зависимости
+node_modules/
+
+# сборка
+dist/
+.astro/
+
+# переменные окружения — никогда не коммитить
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+
+# системное
+.DS_Store
+*.pptx
+index.js

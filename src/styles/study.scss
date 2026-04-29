@@ -1,0 +1,238 @@
+.study-filter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+
+  &__bar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  &__group {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  &__label {
+    font-size: var(--font-size-sm);
+    color: var(--color-muted);
+    white-space: nowrap;
+    padding-top: 5px;
+    min-width: 44px;
+  }
+
+  &__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  &__chip {
+    font: inherit;
+    font-size: var(--font-size-sm);
+    padding: 4px 12px;
+    border: 1px solid var(--color-border);
+    background: #fff;
+    cursor: pointer;
+
+    &:hover {
+      border-color: var(--color-text);
+    }
+
+    &--on {
+      background: var(--color-text);
+      color: #fff;
+      border-color: var(--color-text);
+    }
+  }
+
+  &__reset {
+    font: inherit;
+    font-size: var(--font-size-sm);
+    color: var(--color-muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: underline;
+    align-self: flex-start;
+
+    &:hover {
+      color: var(--color-text);
+    }
+  }
+
+  &__count {
+    font-size: var(--font-size-sm);
+    color: var(--color-muted);
+    text-align: center;
+  }
+
+  &__empty {
+    font-size: var(--font-size-sm);
+    color: var(--color-muted);
+    padding: var(--space-5) 0;
+    text-align: center;
+  }
+}
+
+.study {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+
+  &__progress {
+    font-size: var(--font-size-sm);
+    color: var(--color-muted);
+    letter-spacing: 0.05em;
+  }
+
+  // Явная высота вместо aspect-ratio — иначе схлопывается при position:absolute детях
+  &__card {
+    width: min(100%, 360px);
+    height: 320px;
+    perspective: 1000px;
+    cursor: pointer;
+    position: relative;
+  }
+
+  &__front,
+  &__back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    user-select: none;
+    border: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    transition: transform 0.35s ease;
+  }
+
+  &__front {
+    transform: rotateY(0deg);
+  }
+
+  &__back {
+    transform: rotateY(180deg);
+  }
+
+  &__card--flipped &__front {
+    transform: rotateY(-180deg);
+  }
+
+  &__card--flipped &__back {
+    transform: rotateY(0deg);
+  }
+
+  &__img-wrap {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__word {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    text-align: center;
+
+    &--back {
+      font-size: var(--font-size-base);
+      font-weight: 400;
+      color: var(--color-muted);
+    }
+  }
+
+  &__translation {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    text-align: center;
+  }
+
+  &__hint {
+    font-size: var(--font-size-sm);
+    color: var(--color-muted);
+    height: 20px; // фиксированная высота чтобы не прыгал layout при смене текста
+  }
+
+  &__example {
+    width: 100%;
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-3);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  &__example-sentence {
+    font-size: var(--font-size-base);
+    font-weight: 500;
+  }
+
+  &__example-translation {
+    font-size: var(--font-size-sm);
+    color: var(--color-muted);
+    margin-bottom: var(--space-2);
+  }
+
+  &__audio-controls {
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  &__audio-btn {
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-sm);
+
+    &:hover {
+      background: var(--color-accent);
+      color: #fff;
+    }
+
+    &--stop {
+      border-color: var(--color-muted);
+      color: var(--color-muted);
+
+      &:hover {
+        background: var(--color-muted);
+        color: #fff;
+      }
+    }
+  }
+
+  &__nav {
+    display: flex;
+    gap: var(--space-4);
+  }
+
+  &__btn {
+    border: 1px solid var(--color-border);
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--font-size-sm);
+
+    &:hover {
+      border-color: var(--color-text);
+    }
+  }
+}

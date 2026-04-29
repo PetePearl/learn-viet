@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import StudyFilter from '../../components/study/StudyFilter';
+import { getAllLessons, getStandaloneCards, getAllTags } from '../../lib/data';
+import '../../styles/study.scss';
+
+const lessons = getAllLessons();
+const standalone = getStandaloneCards();
+const tags = getAllTags();
+
+const allCards = [
+  ...lessons.flatMap((l) => l.cards.map((c) => ({ ...c, lessonSlug: l.slug }))),
+  ...standalone,
+];
+
+const lessonMetas = lessons.map((l) => ({ slug: l.slug, title: l.title }));
+---
+
+<BaseLayout title="Изучение слов">
+  <div class="study-page">
+    <div class="study-header">
+      <a class="back" href="/">← Уроки</a>
+      <h1 class="study-title">Изучение слов</h1>
+    </div>
+    <StudyFilter cards={allCards} lessons={lessonMetas} tags={tags} client:load />
+  </div>
+</BaseLayout>
+
+<style lang="scss">
+  .study-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .study-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .back {
+    font-size: var(--font-size-sm);
+    color: var(--color-muted);
+  }
+
+  .study-title {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+  }
+</style>

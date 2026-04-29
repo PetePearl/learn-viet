@@ -1,0 +1,118 @@
+---
+import type { Card } from '../lib/data';
+import { getAllTags } from '../lib/data';
+
+interface Props {
+  card: Card;
+}
+
+const { card } = Astro.props;
+const allTags = getAllTags();
+const cardTags = (card.tags ?? []).map((id) => allTags.find((t) => t.id === id)).filter(Boolean);
+---
+
+<div class="word-card">
+  <div class="word-card__img-wrap">
+    <img
+      src={`/images/${card.illustration}`}
+      alt={card.word}
+      loading="lazy"
+      onerror="this.src='/images/placeholder.svg'"
+    />
+  </div>
+  <div class="word-card__body">
+    <p class="word-card__word">{card.word}</p>
+    <p class="word-card__translation">{card.translation}</p>
+    {cardTags.length > 0 && (
+      <div class="word-card__tags">
+        {cardTags.map((tag) => (
+          <span class="word-card__tag">{tag!.name}</span>
+        ))}
+      </div>
+    )}
+    {card.audio && (
+      <button
+        class="word-card__audio"
+        data-audio={`/audio/${card.audio}`}
+        aria-label="Произношение"
+        title="Воспроизвести"
+      >
+        ▶
+      </button>
+    )}
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.word-card__audio').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const src = btn.dataset.audio!;
+      new Audio(src).play();
+    });
+  });
+</script>
+
+<style lang="scss">
+  .word-card {
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+
+    &__img-wrap {
+      aspect-ratio: 1;
+      overflow: hidden;
+      background: #f5f5f5;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: var(--space-3);
+      }
+    }
+
+    &__body {
+      padding: var(--space-3);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+
+    &__word {
+      font-size: var(--font-size-lg);
+      font-weight: 600;
+    }
+
+    &__translation {
+      font-size: var(--font-size-sm);
+      color: var(--color-muted);
+    }
+
+    &__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-1);
+      margin-top: var(--space-1);
+    }
+
+    &__tag {
+      font-size: 11px;
+      color: var(--color-muted);
+      border: 1px solid var(--color-border);
+      padding: 1px 6px;
+    }
+
+    &__audio {
+      align-self: flex-start;
+      margin-top: var(--space-2);
+      font-size: var(--font-size-sm);
+      color: var(--color-accent);
+      border: 1px solid var(--color-accent);
+      padding: 2px var(--space-2);
+
+      &:hover {
+        background: var(--color-accent);
+        color: #fff;
+      }
+    }
+  }
+</style>

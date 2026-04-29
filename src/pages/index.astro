@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LessonCard from '../components/LessonCard.astro';
+import { getAllLessons } from '../lib/data';
+
+const lessons = getAllLessons();
+---
+
+<BaseLayout title="Уроки">
+  <h1 class="page-title">Уроки</h1>
+  <div class="lessons-grid">
+    {lessons.map((lesson) => (
+      <LessonCard lesson={lesson} />
+    ))}
+  </div>
+</BaseLayout>
+
+<style lang="scss">
+  .page-title {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    margin-bottom: var(--space-5);
+  }
+
+  .lessons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-4);
+  }
+</style>

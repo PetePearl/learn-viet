@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import StudyMode from '../../components/study/StudyMode';
+import { getStandaloneCards } from '../../lib/data';
+import '../../styles/study.scss';
+
+const cards = getStandaloneCards();
+---
+
+<BaseLayout title="Изучать — отдельные карточки">
+  <div class="study-page">
+    <div class="study-header">
+      <a class="back" href="/">← Главная</a>
+      <h1 class="study-title">Отдельные карточки</h1>
+      <p class="study-count">{cards.length} слов</p>
+    </div>
+    {cards.length > 0
+      ? <StudyMode cards={cards} client:load />
+      : <p>Карточек пока нет.</p>
+    }
+  </div>
+</BaseLayout>
+
+<style lang="scss">
+  .study-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .study-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .back {
+    font-size: var(--font-size-sm);
+    color: var(--color-muted);
+  }
+
+  .study-title {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+  }
+
+  .study-count {
+    color: var(--color-muted);
+    font-size: var(--font-size-sm);
+  }
+</style>

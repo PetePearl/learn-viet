@@ -1,0 +1,17 @@
+[
+  {
+    "id": "con-cho",
+    "word": "Con chó",
+    "translation": "собака",
+    "illustration": "con-cho.jpg",
+    "audio": "con-cho.mp3",
+    "tags": [
+      ""
+    ],
+    "example": {
+      "sentence": "Con chó vui vẻ",
+      "translation": "Собака веселая",
+      "audio": "con-cho-example.mp3"
+    }
+  }
+]

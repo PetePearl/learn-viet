@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import WordCard from '../../components/WordCard.astro';
+import { getAllLessons } from '../../lib/data';
+
+export function getStaticPaths() {
+  return getAllLessons().map((lesson) => ({
+    params: { slug: lesson.slug },
+    props: { lesson },
+  }));
+}
+
+const { lesson } = Astro.props;
+---
+
+<BaseLayout title={lesson.title}>
+  <div class="lesson-header">
+    <a class="back" href="/">← Все уроки</a>
+    <h1 class="lesson-title">{lesson.title}</h1>
+    {lesson.description && (
+      <p class="lesson-desc">{lesson.description}</p>
+    )}
+    <a class="study-btn" href={`/study/${lesson.slug}`}>Изучать карточки →</a>
+  </div>
+
+  <div class="cards-grid">
+    {lesson.cards.map((card) => (
+      <WordCard card={card} />
+    ))}
+  </div>
+</BaseLayout>
+
+<style lang="scss">
+  .lesson-header {
+    margin-bottom: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .back {
+    font-size: var(--font-size-sm);
+    color: var(--color-muted);
+  }
+
+  .lesson-title {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+  }
+
+  .lesson-desc {
+    color: var(--color-muted);
+  }
+
+  .study-btn {
+    display: inline-block;
+    align-self: flex-start;
+    border: 1px solid var(--color-text);
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+
+    &:hover {
+      background: var(--color-text);
+      color: var(--color-bg);
+      text-decoration: none;
+    }
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 200px);
+    justify-content: start;
+    gap: var(--space-4);
+  }
+</style>

@@ -1,0 +1,49 @@
+---
+import type { Lesson } from '../lib/data';
+
+interface Props {
+  lesson: Lesson;
+}
+
+const { lesson } = Astro.props;
+---
+
+<a class="lesson-card" href={`/lessons/${lesson.slug}`}>
+  <div class="lesson-card__count">{lesson.cards.length} слов</div>
+  <h2 class="lesson-card__title">{lesson.title}</h2>
+  {lesson.description && (
+    <p class="lesson-card__desc">{lesson.description}</p>
+  )}
+</a>
+
+<style lang="scss">
+  .lesson-card {
+    display: block;
+    border: 1px solid var(--color-border);
+    padding: var(--space-4);
+    text-decoration: none;
+
+    &:hover {
+      border-color: var(--color-text);
+      text-decoration: none;
+    }
+
+    &__count {
+      font-size: var(--font-size-sm);
+      color: var(--color-muted);
+      margin-bottom: var(--space-2);
+    }
+
+    &__title {
+      font-size: var(--font-size-lg);
+      font-weight: 600;
+      margin-bottom: var(--space-2);
+    }
+
+    &__desc {
+      font-size: var(--font-size-sm);
+      color: var(--color-muted);
+      line-height: 1.4;
+    }
+  }
+</style>

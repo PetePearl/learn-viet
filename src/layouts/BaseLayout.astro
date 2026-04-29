@@ -1,0 +1,77 @@
+---
+import '../styles/global.scss';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+const path = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} — Viet Learn</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="nav__logo" href="/">Viet Learn</a>
+        <div class="nav__links">
+          <a href="/" class={path === '/' ? 'active' : ''}>Уроки</a>
+          <a href="/study" class={path.startsWith('/study') ? 'active' : ''}>Изучать</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="main">
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style lang="scss">
+  .site-header {
+    border-bottom: 1px solid var(--color-border);
+    padding: 0 var(--space-5);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+    height: 56px;
+    max-width: 1100px;
+    margin: 0 auto;
+
+    &__logo {
+      font-weight: 700;
+      font-size: var(--font-size-lg);
+      color: var(--color-accent);
+      text-decoration: none;
+    }
+
+    &__links {
+      display: flex;
+      gap: var(--space-4);
+      font-size: var(--font-size-sm);
+
+      a {
+        color: var(--color-muted);
+        text-decoration: none;
+
+        &:hover { color: var(--color-text); }
+        &.active { color: var(--color-text); font-weight: 600; }
+      }
+    }
+  }
+
+  .main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: var(--space-5);
+  }
+</style>

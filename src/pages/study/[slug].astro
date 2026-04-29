@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import StudyMode from '../../components/study/StudyMode';
+import { getAllLessons } from '../../lib/data';
+import '../../styles/study.scss';
+
+export function getStaticPaths() {
+  return getAllLessons().map((lesson) => ({
+    params: { slug: lesson.slug },
+    props: { lesson },
+  }));
+}
+
+const { lesson } = Astro.props;
+---
+
+<BaseLayout title={`Изучение — ${lesson.title}`}>
+  <div class="study-page">
+    <div class="study-header">
+      <a class="back" href={`/lessons/${lesson.slug}`}>← К уроку</a>
+      <h1 class="study-title">{lesson.title}</h1>
+    </div>
+    <StudyMode cards={lesson.cards} client:load />
+  </div>
+</BaseLayout>
+
+<style lang="scss">
+  .study-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .study-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .back {
+    font-size: var(--font-size-sm);
+    color: var(--color-muted);
+  }
+
+  .study-title {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+  }
+</style>

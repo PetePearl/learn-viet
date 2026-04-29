@@ -1,0 +1,127 @@
+{
+  "slug": "lesson-01",
+  "title": "Урок 1. Кто что ест?",
+  "description": "Персонажи Nam, An, Bà. Глагол ăn (есть). Продукты: апельсин, рис, клубника, грибы. Прилагательное vui (радостный). Вопрос Ai? (кто?).",
+  "cards": [
+    {
+      "id": "nam",
+      "word": "Nam",
+      "translation": "Нам (имя мальчика)",
+      "illustration": "nam.png",
+      "audio": null,
+      "example": {
+        "sentence": "Nam ăn cam.",
+        "translation": "Нам ест апельсин.",
+        "audio": null
+      }
+    },
+    {
+      "id": "an",
+      "word": "An",
+      "translation": "Ан (имя девочки)",
+      "illustration": "an.png",
+      "audio": null,
+      "example": {
+        "sentence": "An ăn dâu tây.",
+        "translation": "Ан ест клубнику.",
+        "audio": null
+      }
+    },
+    {
+      "id": "ba",
+      "word": "bà",
+      "translation": "бабушка",
+      "illustration": "ba.png",
+      "audio": null,
+      "example": {
+        "sentence": "Bà ăn cơm.",
+        "translation": "Бабушка ест рис.",
+        "audio": null
+      }
+    },
+    {
+      "id": "an-eat",
+      "word": "ăn",
+      "translation": "есть, кушать",
+      "illustration": "an-eat.png",
+      "audio": null,
+      "example": {
+        "sentence": "Nam và An ăn cam.",
+        "translation": "Нам и Ан едят апельсин.",
+        "audio": null
+      }
+    },
+    {
+      "id": "cam",
+      "word": "cam",
+      "translation": "апельсин",
+      "illustration": "cam.png",
+      "audio": "cam.m4a",
+      "example": {
+        "sentence": "Bà ăn cam.",
+        "translation": "Бабушка ест апельсин.",
+        "audio": null
+      }
+    },
+    {
+      "id": "com",
+      "word": "cơm",
+      "translation": "варёный рис",
+      "illustration": "com.png",
+      "audio": "com.m4a",
+      "example": {
+        "sentence": "Nam ăn cơm.",
+        "translation": "Нам ест рис.",
+        "audio": null
+      }
+    },
+    {
+      "id": "dau-tay",
+      "word": "dâu tây",
+      "translation": "клубника",
+      "illustration": "dau-tay.png",
+      "audio": "dau-tay.m4a",
+      "example": {
+        "sentence": "An ăn dâu tây.",
+        "translation": "Ан ест клубнику.",
+        "audio": null
+      }
+    },
+    {
+      "id": "nam-mushroom",
+      "word": "nấm",
+      "translation": "грибы",
+      "illustration": "nam-mushroom.png",
+      "audio": "nam-mushroom.m4a",
+      "example": {
+        "sentence": "Bà ăn nấm.",
+        "translation": "Бабушка ест грибы.",
+        "audio": null
+      }
+    },
+    {
+      "id": "vui",
+      "word": "vui",
+      "translation": "радостный, весёлый",
+      "illustration": "vui.png",
+      "audio": "vui.m4a",
+      "example": {
+        "sentence": "Nam và An vui.",
+        "translation": "Нам и Ан радостные.",
+        "audio": null
+      }
+    },
+    {
+      "id": "ai",
+      "word": "Ai?",
+      "translation": "кто?",
+      "illustration": "ai.png",
+      "audio": null,
+      "example": {
+        "sentence": "Ai ăn cam?",
+        "translation": "Кто ест апельсин?",
+        "audio": null
+      }
+    }
+  ]
+}
