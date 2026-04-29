@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync, existsSync, readdirSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync, readdirSync, mkdirSync } from 'fs';
 import { join } from 'path';
 
 const ROOT = join(import.meta.dir, '..');
@@ -1151,21 +1151,28 @@ const server = Bun.serve({
         if (!word || !translation) return Response.json({ ok: false, error: 'Слово и перевод обязательны' }, { status: 400 });
 
         const slug = slugify(word);
+        const subfolder = lessonSlug ? `lessons/${lessonSlug}` : 'standalone';
+        const subImagesDir = join(IMAGES_DIR, subfolder);
+        const subAudioDir = join(AUDIO_DIR, subfolder);
+        if (!existsSync(subImagesDir)) mkdirSync(subImagesDir, { recursive: true });
+        if (!existsSync(subAudioDir)) mkdirSync(subAudioDir, { recursive: true });
 
-        const audioFile = `${slug}.mp3`;
-        const audioOk = await downloadAudio(word, join(AUDIO_DIR, audioFile));
+        const audioFileName = `${slug}.mp3`;
+        const audioPath = `${subfolder}/${audioFileName}`;
+        const audioOk = await downloadAudio(word, join(subAudioDir, audioFileName));
 
-        let exampleAudioFile: string | null = null;
+        let exampleAudioPath: string | null = null;
         let exampleAudioOk = false;
         if (exampleSentence) {
-          exampleAudioFile = `${slug}-example.mp3`;
-          exampleAudioOk = await downloadAudio(exampleSentence, join(AUDIO_DIR, exampleAudioFile));
-          if (!exampleAudioOk) exampleAudioFile = null;
+          const exAudioFileName = `${slug}-example.mp3`;
+          exampleAudioOk = await downloadAudio(exampleSentence, join(subAudioDir, exAudioFileName));
+          if (exampleAudioOk) exampleAudioPath = `${subfolder}/${exAudioFileName}`;
         }
 
-        const imageFile = `${slug}.jpg`;
+        const imageFileName = `${slug}.jpg`;
+        const imagePath = `${subfolder}/${imageFileName}`;
         const imageOk = imageUrl
-          ? await downloadImageFromUrl(imageUrl, join(IMAGES_DIR, imageFile))
+          ? await downloadImageFromUrl(imageUrl, join(subImagesDir, imageFileName))
           : false;
 
         const parsedTags: string[] = tags ? JSON.parse(tags) : [];
@@ -1174,13 +1181,13 @@ const server = Bun.serve({
           id: slug,
           word,
           translation,
-          illustration: imageOk ? imageFile : 'placeholder.svg',
-          audio: audioOk ? audioFile : null,
+          illustration: imageOk ? imagePath : 'placeholder.svg',
+          audio: audioOk ? audioPath : null,
           ...(parsedTags.length > 0 && { tags: parsedTags }),
         };
 
         if (exampleSentence && exampleTranslation) {
-          card.example = { sentence: exampleSentence, translation: exampleTranslation, audio: exampleAudioFile };
+          card.example = { sentence: exampleSentence, translation: exampleTranslation, audio: exampleAudioPath };
         }
 
         saveCard(card, lessonSlug || undefined);

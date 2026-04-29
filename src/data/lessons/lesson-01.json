@@ -7,120 +7,120 @@
       "id": "nam",
       "word": "Nam",
       "translation": "Нам (имя мальчика)",
-      "illustration": "nam.png",
-      "audio": "nam.mp3",
+      "illustration": "lessons/lesson-01/nam.png",
+      "audio": "lessons/lesson-01/nam.mp3",
       "example": {
         "sentence": "Nam ăn cam.",
         "translation": "Нам ест апельсин.",
-        "audio": "nam-example.mp3"
+        "audio": "lessons/lesson-01/nam-example.mp3"
       }
     },
     {
       "id": "an",
       "word": "An",
       "translation": "Ан (имя девочки)",
-      "illustration": "an.png",
-      "audio": "an.mp3",
+      "illustration": "lessons/lesson-01/an.png",
+      "audio": "lessons/lesson-01/an.mp3",
       "example": {
         "sentence": "An ăn dâu tây.",
         "translation": "Ан ест клубнику.",
-        "audio": "an-example.mp3"
+        "audio": "lessons/lesson-01/an-example.mp3"
       }
     },
     {
       "id": "ba",
       "word": "bà",
       "translation": "бабушка",
-      "illustration": "ba.png",
-      "audio": "ba.mp3",
+      "illustration": "lessons/lesson-01/ba.png",
+      "audio": "lessons/lesson-01/ba.mp3",
       "example": {
         "sentence": "Bà ăn cơm.",
         "translation": "Бабушка ест рис.",
-        "audio": "ba-example.mp3"
+        "audio": "lessons/lesson-01/ba-example.mp3"
       }
     },
     {
       "id": "an-eat",
       "word": "ăn",
       "translation": "есть, кушать",
-      "illustration": "an-eat.png",
-      "audio": "an-eat.mp3",
+      "illustration": "lessons/lesson-01/an-eat.png",
+      "audio": "lessons/lesson-01/an-eat.mp3",
       "example": {
         "sentence": "Nam và An ăn cam.",
         "translation": "Нам и Ан едят апельсин.",
-        "audio": "an-eat-example.mp3"
+        "audio": "lessons/lesson-01/an-eat-example.mp3"
       }
     },
     {
       "id": "cam",
       "word": "cam",
       "translation": "апельсин",
-      "illustration": "cam.png",
-      "audio": "cam.m4a",
+      "illustration": "lessons/lesson-01/cam.png",
+      "audio": "lessons/lesson-01/cam.m4a",
       "example": {
         "sentence": "Bà ăn cam.",
         "translation": "Бабушка ест апельсин.",
-        "audio": "cam-example.mp3"
+        "audio": "lessons/lesson-01/cam-example.mp3"
       }
     },
     {
       "id": "com",
       "word": "cơm",
       "translation": "варёный рис",
-      "illustration": "com.png",
-      "audio": "com.m4a",
+      "illustration": "lessons/lesson-01/com.png",
+      "audio": "lessons/lesson-01/com.m4a",
       "example": {
         "sentence": "Nam ăn cơm.",
         "translation": "Нам ест рис.",
-        "audio": "com-example.mp3"
+        "audio": "lessons/lesson-01/com-example.mp3"
       }
     },
     {
       "id": "dau-tay",
       "word": "dâu tây",
       "translation": "клубника",
-      "illustration": "dau-tay.png",
-      "audio": "dau-tay.m4a",
+      "illustration": "lessons/lesson-01/dau-tay.png",
+      "audio": "lessons/lesson-01/dau-tay.m4a",
       "example": {
         "sentence": "An ăn dâu tây.",
         "translation": "Ан ест клубнику.",
-        "audio": "dau-tay-example.mp3"
+        "audio": "lessons/lesson-01/dau-tay-example.mp3"
       }
     },
     {
       "id": "nam-mushroom",
       "word": "nấm",
       "translation": "грибы",
-      "illustration": "nam-mushroom.png",
-      "audio": "nam-mushroom.m4a",
+      "illustration": "lessons/lesson-01/nam-mushroom.png",
+      "audio": "lessons/lesson-01/nam-mushroom.m4a",
       "example": {
         "sentence": "Bà ăn nấm.",
         "translation": "Бабушка ест грибы.",
-        "audio": "nam-mushroom-example.mp3"
+        "audio": "lessons/lesson-01/nam-mushroom-example.mp3"
       }
     },
     {
       "id": "vui",
       "word": "vui",
       "translation": "радостный, весёлый",
-      "illustration": "vui.png",
-      "audio": "vui.m4a",
+      "illustration": "lessons/lesson-01/vui.png",
+      "audio": "lessons/lesson-01/vui.m4a",
       "example": {
         "sentence": "Nam và An vui.",
         "translation": "Нам и Ан радостные.",
-        "audio": "vui-example.mp3"
+        "audio": "lessons/lesson-01/vui-example.mp3"
       }
     },
     {
       "id": "ai",
       "word": "Ai?",
       "translation": "кто?",
-      "illustration": "ai.png",
-      "audio": "ai.mp3",
+      "illustration": "lessons/lesson-01/ai.png",
+      "audio": "lessons/lesson-01/ai.mp3",
       "example": {
         "sentence": "Ai ăn cam?",
         "translation": "Кто ест апельсин?",
-        "audio": "ai-example.mp3"
+        "audio": "lessons/lesson-01/ai-example.mp3"
       }
     }
   ]

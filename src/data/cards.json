@@ -3,12 +3,12 @@
     "id": "con-cho",
     "word": "Con chó",
     "translation": "собака",
-    "illustration": "con-cho.jpg",
-    "audio": "con-cho.mp3",
+    "illustration": "standalone/con-cho.jpg",
+    "audio": "standalone/con-cho.mp3",
     "example": {
       "sentence": "Con chó vui vẻ",
       "translation": "Собака веселая",
-      "audio": "con-cho-example.mp3"
+      "audio": "standalone/con-cho-example.mp3"
     }
   }
 ]
