@@ -5,6 +5,7 @@
     "translation": "собака",
     "illustration": "standalone/con-cho.jpg",
     "audio": "standalone/con-cho.mp3",
+    "tags": ["domashnie-zhivotnye"],
     "example": {
       "sentence": "Con chó vui vẻ",
       "translation": "Собака веселая",
