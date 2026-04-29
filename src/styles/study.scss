@@ -154,14 +154,16 @@
 
   &__img-loader {
     position: absolute;
-    inset: 0;
-    background: #f0f0f0;
-    animation: study-pulse 1s ease-in-out infinite;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #e0e0e0;
+    border-top-color: #aaa;
+    border-radius: 50%;
+    animation: study-spin 0.7s linear infinite;
   }
 
-  @keyframes study-pulse {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0.4; }
+  @keyframes study-spin {
+    to { transform: rotate(360deg); }
   }
 
   &__word {

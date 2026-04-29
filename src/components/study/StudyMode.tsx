@@ -1,4 +1,4 @@
-import { createSignal, createEffect, onCleanup } from 'solid-js';
+import { createSignal, createEffect, onCleanup, Show } from 'solid-js';
 import type { Card } from '../../lib/data';
 
 interface Props {
@@ -46,6 +46,7 @@ export default function StudyMode(props: Props) {
   const [index, setIndex] = createSignal(0);
   const [flipped, setFlipped] = createSignal(false);
   const [imgLoading, setImgLoading] = createSignal(true);
+  let imgRef: HTMLImageElement | undefined;
 
   createEffect(() => {
     void props.cards;
@@ -54,12 +55,16 @@ export default function StudyMode(props: Props) {
   });
 
   const card = () => props.cards[index()];
+  const total = () => props.cards.length;
 
   createEffect(() => {
     void card().illustration;
     setImgLoading(true);
+    // Если картинка уже закэшированна — onLoad не выстрелит
+    Promise.resolve().then(() => {
+      if (imgRef?.complete && imgRef.naturalWidth > 0) setImgLoading(false);
+    });
   });
-  const total = () => props.cards.length;
 
   function prev() {
     setFlipped(false);
@@ -87,8 +92,11 @@ export default function StudyMode(props: Props) {
       >
         <div class="study__front">
           <div class="study__img-wrap">
-            {imgLoading() && <div class="study__img-loader" />}
+            <Show when={imgLoading()}>
+              <div class="study__img-loader" />
+            </Show>
             <img
+              ref={imgRef}
               src={`${import.meta.env.BASE_URL}/images/${card().illustration}`}
               alt={card().word}
               style={{ opacity: imgLoading() ? 0 : 1 }}
@@ -123,10 +131,12 @@ export default function StudyMode(props: Props) {
         {flipped() ? 'нажмите, чтобы вернуть' : 'нажмите, чтобы увидеть перевод'}
       </p>
 
-      <div class="study__nav">
-        <button class="study__btn" onClick={prev}>← Назад</button>
-        <button class="study__btn" onClick={next}>Вперёд →</button>
-      </div>
+      <Show when={total() > 1}>
+        <div class="study__nav">
+          <button class="study__btn" onClick={prev}>← Назад</button>
+          <button class="study__btn" onClick={next}>Вперёд →</button>
+        </div>
+      </Show>
     </div>
   );
 }
